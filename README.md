@@ -3,12 +3,12 @@ Customer Facing Collateral
 
 ## Integrations
 
-Collateral focused on working with 3rd party tools and applications
+[Collateral focused on working with 3rd party tools and applications](./Integrations/README.md)
 
 ## Scripts
 
-Collateral focused around Rancher & Nuevector automation and architectures
+[Collateral focused around Rancher & Nuevector automation and architectures](./Scripts/README.md)
 
 ## Walkthroughs
 
-Technical guides for configuration and operations
+[Technical guides for configuration and operations](./Walkthroughs/README.md)
