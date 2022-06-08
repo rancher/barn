@@ -77,7 +77,7 @@ kubectl get nodes
 
 # 5. Install additional CNI binaries
 
-* NSX-T also requires access to thr `portmap` CNI binary. this can be acquired by:
+* NSX-T also requires access to the `portmap` CNI binary. this can be acquired by:
 
 ```shell
 wget https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-linux-amd64-v1.1.1.tgz
