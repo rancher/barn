@@ -36,4 +36,4 @@ Grafana dashboards can also be added programmatically by adding a ConfigMap to t
 
 [04-grafana-dashboard.yaml](./04-grafana-dashboard.yaml)
 
-A good source to discover existing dashboard is the [Grafana Dashboard Directory](https://grafana.com/grafana/dashboards/).
+A good source to discover existing dashboards is the [Grafana Dashboard Directory](https://grafana.com/grafana/dashboards/).
