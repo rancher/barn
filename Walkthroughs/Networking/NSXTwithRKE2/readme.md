@@ -2,13 +2,13 @@
 
 This document outlines a basic implementation of the VMware NSX-T CNI plugin for RKE2
 
-# 1. Planning
+## 1. Planning
 
 The following illustrates my Lab environment with a single node cluster:
 
 ![network topology diagram](./images/diagram.png)
 
-## General Considerations
+### General Considerations
 
 If you have a new NSX-T environment, ensure you have (as a minimum) the following:
 
@@ -19,7 +19,7 @@ If you have a new NSX-T environment, ensure you have (as a minimum) the followin
 * Overlay Transport Zone
 * Route advertisment (BGP/OSPF) to the physical network
 
-## NSX Specific Considerations
+### NSX Specific Considerations
 
 * A network segment (or vds port) for management traffic (NS-K8S-MGMT in this example)
 * A network segment for overlay traffic (NS-K8S-OVERLAY)
@@ -33,7 +33,7 @@ You will need to acquire and upload the ncp container image to a private repo:
 
 This will contain the NCP image
 
-# 2. Prepare NSX Objects
+## 2. Prepare NSX Objects
 
 * Create and retrieve the object ID's for:
 * An IP Block for the Pods (this /16 will be divided into /24's in our cluster)
@@ -44,7 +44,7 @@ This will contain the NCP image
 
 ![img_6.png](images/img_6.png)
 
-# 3. Create VM
+## 3. Create VM
 
 * Create a VM with one nic attached to the Management network, and one attached to the Overlay network. Note, for ease you can configure NSX-T to provide DHCP services to both
 
@@ -52,7 +52,7 @@ This will contain the NCP image
 
 * Ensure `Python` is Installed (aka Python2)
 
-# 4. Install RKE2
+## 4. Install RKE2
 
 * Create the following configuration file to instruct RKE2 not to auto-apply a CNI:
 
@@ -75,7 +75,7 @@ kubectl get nodes
 
 * You will notice some pods are in `pending` state - this is normal as these reside outside of the host networking namespace and we have yet to install a CNI
 
-# 5. Install additional CNI binaries
+## 5. Install additional CNI binaries
 
 * NSX-T also requires access to the `portmap` CNI binary. this can be acquired by:
 
@@ -85,7 +85,7 @@ wget https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni
 
 * Extract the contents to `/opt/cni/bin/`
 
-# 6. Tag the overlay network port on the VM
+## 6. Tag the overlay network port on the VM
 
 The NSX-T container plugin needs to identify the port used for container traffic. In the example above, this is the interface connection to our Overlay switch
 
@@ -100,22 +100,21 @@ The NSX-T container plugin needs to identify the port used for container traffic
 
 ![img_3.png](images/img_3.png)
 
-
-# 7. Download the NCP operator files
+## 7. Download the NCP operator files
 
 * `git clone https://github.com/vmware/nsx-container-plugin-operator`
 * Change directory - `cd /deploy/kubernetes/`
 
-# 8. Change the Operator yaml
+## 8. Change the Operator yaml
 
 * `Operator.yaml` - replace where the image resides in your environment. Example:
 
-```
+```yaml
             - name: NCP_IMAGE
               value: "core.harbor.virtualthoughts.co.uk/library/nsx-ncp-ubuntu:latest"
 ```
 
-# 9. Change the Configmap yaml file
+## 9. Change the Configmap yaml file
 
 Which values to change will depend on your deployment topology, but as an example:
 
@@ -252,7 +251,7 @@ Which values to change will depend on your deployment topology, but as an exampl
 +    edge_cluster = 726530a3-a488-44d5-aea6-7ee21d178fbc
 ```
 
-# 10. Apply the manifest files
+## 10. Apply the manifest files
 
 ```shell
 kubectl apply -f /nsx-container-plugin-operator/deploy/kubernetes/*

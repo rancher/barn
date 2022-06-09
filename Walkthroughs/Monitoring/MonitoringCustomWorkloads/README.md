@@ -10,7 +10,7 @@ The following examples show how you can configure Prometheus Operator through th
 
 ## Deploying a workload
 
-In order to add metrics from your custom workload, your workload needs to expose metrics in the format that Prometheus understands. Prometheus expects workloads (targets) to expose their metrics over standard HTTP(S) (see [Prometheus Exposition Formats](https://prometheus.io/docs/instrumenting/exposition_formats/)). There are [exporters](https://prometheus.io/docs/instrumenting/exporters/) available for lots of different existing 3rd party workloads like databases, queues etc., which expose their metrics in a Prometheus ready format. For your own workloads, there are libraries for all the popular programming languages and framework that can help you to implement these Prometheus metrics endpoints. 
+In order to add metrics from your custom workload, your workload needs to expose metrics in the format that Prometheus understands. Prometheus expects workloads (targets) to expose their metrics over standard HTTP(S) (see [Prometheus Exposition Formats](https://prometheus.io/docs/instrumenting/exposition_formats/)). There are [exporters](https://prometheus.io/docs/instrumenting/exporters/) available for lots of different existing 3rd party workloads like databases, queues etc., which expose their metrics in a Prometheus ready format. For your own workloads, there are libraries for all the popular programming languages and framework that can help you to implement these Prometheus metrics endpoints.
 
 This example deploys a single node Redis instance with a Redis Prometheus Exporter as a sidecar:
 
@@ -26,7 +26,7 @@ Next, you can create a [ServiceMonitor](https://prometheus-operator.dev/docs/ope
 
 ## Adding an alert
 
-Alerts are created with [PrometheusRules](https://prometheus-operator.dev/docs/operator/api/#prometheusrule). 
+Alerts are created with [PrometheusRules](https://prometheus-operator.dev/docs/operator/api/#prometheusrule).
 
 [03-prometheus-rule.yaml](./03-prometheus-rule.yaml)
 
