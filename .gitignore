@@ -1,0 +1,16 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# terraform.tvars
+*.tfvars
+
+kubeconfig
+
+*.lock.hcl
+
+.DS_Store
+

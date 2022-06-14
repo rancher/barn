@@ -1,0 +1,17 @@
+prometheus:
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/auth-type: basic
+      nginx.ingress.kubernetes.io/auth-secret: prometheus-basic-auth
+    hosts:
+      - prometheus.downstream-two.plgrnd.be
+    paths:
+      - /
+    pathType: Prefix
+    tls:
+      - secretName: prometheus-ingress-tls
+        hosts:
+          - prometheus.downstream-two.plgrnd.be
+

@@ -1,0 +1,96 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: central-prometheus
+  namespace: central-monitoring-system
+spec:
+  alerting:
+    alertmanagers:
+      - apiVersion: v2
+        name: rancher-monitoring-alertmanager
+        namespace: cattle-monitoring-system
+        pathPrefix: /
+        port: web
+  enableAdminAPI: false
+  image: rancher/mirrored-prometheus-prometheus:v2.28.1
+  listenLocal: false
+  logFormat: logfmt
+  logLevel: info
+  nodeSelector:
+    kubernetes.io/os: linux
+  paused: false
+  podMonitorNamespaceSelector: {}
+  podMonitorSelector:
+    matchLabels:
+      release: central-monitoring
+  probeNamespaceSelector: {}
+  probeSelector:
+    matchLabels:
+      release: central-monitoring
+  replicas: 1
+  resources:
+    limits:
+      cpu: 3500m
+      memory: 5000Mi
+    requests:
+      cpu: 2500m
+      memory: 2500Mi
+  retention: 10d
+  routePrefix: /
+  ruleNamespaceSelector: {}
+  ruleSelector:
+    matchLabels:
+      release: central-monitoring
+  securityContext:
+    fsGroup: 2000
+    runAsGroup: 2000
+    runAsNonRoot: true
+    runAsUser: 1000
+  serviceMonitorNamespaceSelector: {}
+  serviceMonitorSelector:
+    matchLabels:
+      release: central-monitoring
+  shards: 1
+  tolerations:
+    - effect: NoSchedule
+      key: cattle.io/os
+      operator: Equal
+      value: linux
+  version: v2.28.1
+  additionalScrapeConfigs:
+    name: prometheus-federation-scrape-config
+    key: prometheus-federation.yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: prometheus-federation-scrape-config
+  namespace: central-monitoring-system
+stringData:
+  prometheus-federation.yaml: |
+    - job_name: "federation"
+      metrics_path: "/federate"
+      scheme: https
+      metric_relabel_configs:
+        - source_labels:
+            - instance
+          regex: prometheus\.([a-z\-]+)\.plgrnd\.be:443
+          target_label: cluster
+        - source_labels:
+            - exported_instance
+          target_label: instance    
+        - source_labels:
+            - exported_job
+          target_label: job    
+        - action: labeldrop
+          regex: exported_.*         
+      params:
+        "match[]": [ '{__name__=~".+"}' ]
+      basic_auth:
+        username: foo
+        password: bar
+      static_configs:
+        - targets: 
+          - "prometheus.central-monitoring.plgrnd.be:443"
+          - "prometheus.downstream-one.plgrnd.be:443"
+          - "prometheus.downstream-two.plgrnd.be:443"

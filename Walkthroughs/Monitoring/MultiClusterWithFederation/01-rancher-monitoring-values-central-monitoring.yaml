@@ -1,0 +1,27 @@
+prometheus:
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/auth-type: basic
+      nginx.ingress.kubernetes.io/auth-secret: prometheus-basic-auth
+    hosts:
+      - prometheus.central-monitoring.plgrnd.be
+    paths:
+      - /
+    pathType: Prefix
+    tls:
+      - secretName: prometheus-ingress-tls
+        hosts:
+          - prometheus.central-monitoring.plgrnd.be
+
+grafana:
+  sidecar:
+    dashboards:
+      multicluster:
+        global:
+          enabled: true
+        etcd:
+          enabled: true
+    datasources:
+      url: http://prometheus-operated.central-monitoring-system:9090/
