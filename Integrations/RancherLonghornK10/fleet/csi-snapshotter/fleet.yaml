@@ -2,4 +2,4 @@
 # see https://longhorn.io/docs/1.2.4/snapshots-and-backups/csi-snapshot-support/enable-csi-snapshot-support/
 
 dependsOn:
-  - name: rancher-longhorn-k10-Integrations-RancherLonghornK10-fleet-longhorn
+  - name: rlk10-Integrations-RancherLonghornK10-fleet-longhorn
