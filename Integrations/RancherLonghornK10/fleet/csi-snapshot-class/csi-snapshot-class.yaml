@@ -6,3 +6,5 @@ metadata:
     k10.kasten.io/is-snapshot-class: "true"
 driver: driver.longhorn.io
 deletionPolicy: Delete
+parameters:
+  type: snap
