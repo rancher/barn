@@ -13,7 +13,8 @@ To test this, create a GitRepo with:
 
 Pre-requisites:
 
-* The Longhorn installation requirements: https://longhorn.io/docs/latest/deploy/install/#installation-requirements
-* In order for the backup to succeed, you have to configure a backup target in Longhorn: https://longhorn.io/docs/latest/references/settings/#backup-target, either through the Longhorn UI or directly in the [Longhorn Helm values](./fleet/longhorn/fleet.yaml)
+* The [Longhorn installation requirements](https://longhorn.io/docs/latest/deploy/install/#installation-requirements)
 
 After the deployment finished, you can access the K10 UI with a NavLink from the cluster.
+
+The [VolumeSnapshotClass](./fleet/csi-snapshot-class/csi-snapshot-class.yaml) is configured to do Longhorn internal snapshots. If you want to perform external backups,  you have to configure a backup target in Longhorn: See [Longhorn Backup Target](https://longhorn.io/docs/latest/references/settings/#backup-target), either through the Longhorn UI or directly in the [Longhorn Helm values](./fleet/longhorn/fleet.yaml). And you have to change the `VolumeSnapshotClass` configuration: See [Longhorn CSI Snapshot support](https://longhorn.io/docs/latest/snapshots-and-backups/csi-snapshot-support/csi-volume-snapshot-associated-with-longhorn-backup/#create-a-csi-volumesnapshot-associated-with-longhorn-backup).
