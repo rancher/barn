@@ -6,6 +6,8 @@ metadata:
   name: nginx
   namespace: app
 spec:
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: nginx
