@@ -7,4 +7,4 @@ helm:
   version: 4.5.1400
 
 dependsOn:
-  - name: rlk10-Integrations-RancherLonghornK10-fleet-longhorn
+  - name: rlk10-integrations-rancherlonghornk10-fleet-longhorn
