@@ -30,7 +30,7 @@ stringData:
   rancher.conf: |
     # rancher server credentials
     url: https://rancher.example.org
-    token: <rancher token>
+    token: <rancher API bearer token>
     # name and namespace of the clusters.provisioning.cattle.io resource on the
     # rancher server
     clusterName: <my-cluster>
