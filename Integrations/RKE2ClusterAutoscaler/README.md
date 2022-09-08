@@ -10,6 +10,8 @@ It works together quite nicely with Kubernetes' built-in [HorizontalPodAutoscale
 
 In Rancher, you can use the Kubernetes Cluster Autoscaler for RKE2 clusters that were provisioned from Rancher with a connection to an infrastructure provider, such as AWS EC2, Azure VMs, vSphere, ...
 
+**Note: You need at use at least [Cluster Autoscaler 1.25.0](https://github.com/kubernetes/autoscaler/releases/tag/cluster-autoscaler-1.25.0) for the RKE2 support.**
+
 ## Installation
 
 Create a [Rancher API key](https://rancher.com/docs/rancher/v2.6/en/user-settings/api-keys/). The key must not be scoped. Note the bearer token value.
@@ -42,9 +44,6 @@ stringData:
 Next install the `cluster-autoscaler` app and change the following configuration values. If you are using the UI to install the cluster-autoscaler, only overwrite the below values and keep the rest of the values as default.
 
 ```yaml
-image:
-  repository: bashofmann/cluster-autoscaler
-  tag: dev
 autoDiscovery:
   clusterName: <my-cluster>
 cloudProvider: rancher
