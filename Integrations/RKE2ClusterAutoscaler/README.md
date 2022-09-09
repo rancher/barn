@@ -77,6 +77,10 @@ spec:
 
 For a full list of annotations and configuration options see [Rancher cloud provider](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler/cloudprovider/rancher).
 
+## Terraform
+
+A boilerplate example of implementing the RKE2 cluster autoscaler using the rancher2 Terraform provider can be found [HERE](https://github.com/frank-at-suse/vsphere_HA_autoscale_cluster)
+
 ## Testing the autoscaler
 
 To test the autoscaler, create one or more Pod/Deployment with a CPU or memory resource request that can't be fulfilled by the cluster anymore. if that happens, and a Pod remains in `Pending` state, the autoscaler will start to increase the MachinePool and add more VMs.
