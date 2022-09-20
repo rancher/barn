@@ -1,0 +1,88 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cattle-system-exporter
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  namespace: cattle-system-exporter
+  name: exporter-role
+rules:
+  - apiGroups: ["management.cattle.io"]
+    resources: ["settings","clusters","nodes","tokens","users"]
+    verbs: ["get", "list"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: rancher-exporter
+  namespace: cattle-system-exporter
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: rancher-exporter
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: exporter-role
+subjects:
+  - kind: ServiceAccount
+    name: rancher-exporter
+    namespace: cattle-system-exporter
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rancher-exporter
+  namespace: cattle-system-exporter
+spec:
+  selector:
+    matchLabels:
+      app: rancher-exporter
+  template:
+    metadata:
+      labels:
+        app: rancher-exporter
+    spec:
+      serviceAccountName: rancher-exporter
+      containers:
+        - imagePullPolicy: Always
+          name: rancher-exporter
+          image: virtualthoughts/prometheus-rancher-exporter:0.80
+          ports:
+            - name: metrics
+              protocol: TCP
+              containerPort: 8080
+  replicas: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rancher-exporter
+  namespace: cattle-system-exporter
+  labels:
+    app: rancher-exporter
+spec:
+  selector:
+    app: rancher-exporter
+  ports:
+    - name: metrics
+      port: 80
+      protocol: TCP
+      targetPort: metrics
+  type: ClusterIP
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: rancher-exporter
+  namespace: cattle-system-exporter
+spec:
+  selector:
+    matchLabels:
+      app: rancher-exporter
+  endpoints:
+    - port: metrics
+      path: /metrics
