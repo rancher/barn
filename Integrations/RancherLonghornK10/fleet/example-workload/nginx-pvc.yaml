@@ -4,6 +4,7 @@ metadata:
   name: nginx-data
   namespace: app
 spec:
+  storageClassName: longhorn
   accessModes:
     - ReadWriteOnce
   resources:
