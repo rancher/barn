@@ -91,8 +91,7 @@ If you are using a private CA certificate (or self-signed) for Rancher, you will
 
 1. Obtain a copy of the *public* certificate for your CA. PEM format is required.
 2. Create a TLS secret in the namespace in which you are going to install cluster-autoscaler. You can use the Rancher UI for this, or this kubectl command:
-        
-    ```
+    ```bash
     kubectl create secret tls --cert=[certfile.pem] rancher-ca-certificate -n [target namespace]
     ```
 
