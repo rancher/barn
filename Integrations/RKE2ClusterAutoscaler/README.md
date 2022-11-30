@@ -84,3 +84,29 @@ A boilerplate example of implementing the RKE2 cluster autoscaler using the ranc
 ## Testing the autoscaler
 
 To test the autoscaler, create one or more Pod/Deployment with a CPU or memory resource request that can't be fulfilled by the cluster anymore. if that happens, and a Pod remains in `Pending` state, the autoscaler will start to increase the MachinePool and add more VMs.
+
+## Private CA
+
+If you are using a private CA certificate (or self-signed) for Rancher, you will need to make cluster-autoscaler aware of that. The GCR distroless images include a base set of public CA certificates which won't include your CA.
+
+1. Obtain a copy of the *public* certificate for your CA. PEM format is required.
+2. Create a TLS secret in the namespace in which you are going to install cluster-autoscaler. You can use the Rancher UI for this, or this kubectl command:
+        
+    ```
+    kubectl create secret tls --cert=[certfile.pem] rancher-ca-certificate -n [target namespace]
+    ```
+
+3. During install of cluster-autoscaler, merge the following into `values.yaml`:
+
+    ```yaml
+    extraVolumeMounts:
+    - mountPath: /etc/ssl/certs
+      name: rancher-ca-certificate
+    extraVolumes:
+    - name: rancher-ca-certificate
+      secret:
+        items:
+          - key: tls.crt
+            path: rancher-ca.pem
+        secretName: rancher-ca-certificate
+    ```
