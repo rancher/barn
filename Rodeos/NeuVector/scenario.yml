@@ -1,0 +1,9 @@
+description: NeuVector Rodeo
+id: git-maintained-rodeo-neuvector
+keepalive_duration: 90m
+name: NeuVector Rodeo (test)
+pause_duration: 4h
+pauseable: false
+steps: null
+virtualmachines:
+- kubernetes01: sles-15-sp2

@@ -1,0 +1,10 @@
+description: Rancher Rodeo
+id: git-maintained-rodeo-rancher
+keepalive_duration: 90m
+name: Rancher Rodeo (test)
+pause_duration: 4h
+pauseable: false
+steps: null
+virtualmachines:
+- cluster01: sles-15-sp2
+  rancher01: sles-15-sp2

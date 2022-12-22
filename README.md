@@ -8,7 +8,7 @@ Customer Facing Collateral
 
 ## Scripts
 
-[Collateral focused around Rancher & Nuevector automation and architectures](./Scripts/README.md)
+[Collateral focused around Rancher & NeuVector automation and architectures](./Scripts/README.md)
 
 ## Walkthroughs
 
