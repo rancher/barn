@@ -13,3 +13,19 @@ fix:
         --fix \
 		--config /data/.markdownlint.yaml \
 		/data
+
+apply-rodeos: apply-rodeo-neuvector apply-rodeo-rancher
+
+apply-rodeo-neuvector:
+	hfcli apply scenario git-maintained-rodeo-neuvector Rodeos/NeuVector/
+
+apply-rodeo-rancher:
+	hfcli apply scenario git-maintained-rodeo-rancher Rodeos/Rancher/
+
+get-rodeos: get-rodeo-neuvector get-rodeo-rancher
+
+get-rodeo-neuvector:
+	hfcli get scenario git-maintained-rodeo-neuvector Rodeos/NeuVector/
+
+get-rodeo-rancher:
+	hfcli get scenario git-maintained-rodeo-rancher Rodeos/Rancher/
