@@ -11,4 +11,7 @@ diff:
   - apiVersion: apiextensions.k8s.io/v1
     kind: CustomResourceDefinition
     operations:
-    - {"op":"remove", "path":"/status"}
+    - {"op":"remove", "path":"/status/acceptedNames/kind"}
+    - {"op":"remove", "path":"/status/acceptedNames/plural"}
+    - {"op":"remove", "path":"/status/conditions"}
+    - {"op":"remove", "path":"/status/storedVersions"}
