@@ -15,3 +15,5 @@ diff:
     - {"op":"remove", "path":"/status/acceptedNames/plural"}
     - {"op":"remove", "path":"/status/conditions"}
     - {"op":"remove", "path":"/status/storedVersions"}
+    jsonPointers:
+    - "/status"
