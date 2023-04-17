@@ -4,7 +4,7 @@ This examples deploys Longhorn, Kasten K10 and an example workload with a K10 ba
 
 To test this, create a GitRepo with:
 
-* Name: `rlk10` (the name can't be changed to not break fleet bundle dependencies)
+* Name: e.g. `rlk10`
 * Repository URL: `https://github.com/rancher/barn`
 * Branch: `main`
 * Paths: `Integrations/RancherLonghornK10/fleet`

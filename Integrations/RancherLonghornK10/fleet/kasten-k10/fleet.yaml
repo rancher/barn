@@ -1,10 +1,15 @@
 defaultNamespace: k10
 
+labels:
+  app: k10
+
 helm:
   chart: k10
   repo: https://partner-charts.rancher.io/
   releaseName: k10
-  version: 4.5.1400
+  version: 5.5.801
 
 dependsOn:
-  - name: rlk10-integrations-rancherlonghornk10-fleet-longhorn
+  - selector:
+      matchLabels:
+        app: longhorn

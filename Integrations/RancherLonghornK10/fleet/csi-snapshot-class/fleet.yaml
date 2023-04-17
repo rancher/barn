@@ -1,4 +1,8 @@
 
+labels:
+  app: fleet-csi-snapshot-class
 
 dependsOn:
-  - name: rlk10-integrations-rancherlonghornk10-fleet-csi-snapshotter
+  - selector:
+      matchLabels:
+        app: fleet-csi-snapshotter

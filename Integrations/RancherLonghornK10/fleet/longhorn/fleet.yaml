@@ -1,6 +1,8 @@
 defaultNamespace: longhorn-system
+labels:
+  app: longhorn
 helm:
   releaseName: longhorn
   chart: longhorn
   repo: https://charts.longhorn.io
-  version: 1.3.0
+  version: 1.4.1
