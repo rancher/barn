@@ -1,8 +1,0 @@
-
-labels:
-  app: fleet-csi-snapshotter
-
-dependsOn:
-  - selector:
-      matchLabels:
-        app: longhorn

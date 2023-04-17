@@ -5,4 +5,4 @@ labels:
 dependsOn:
   - selector:
       matchLabels:
-        app: fleet-csi-snapshotter
+        app: longhorn
