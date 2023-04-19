@@ -11,6 +11,7 @@ spec:
   selector:
     matchLabels:
       app: nginx
+      test: test
   template:
     metadata:
       labels:
