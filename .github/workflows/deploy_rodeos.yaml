@@ -1,0 +1,40 @@
+name: Deploy Rodeos
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+    - 'Rodeos/**'
+
+jobs:
+  lint:
+    name: Lint Rodeo Scenarios
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Lint all Rodeo markdown files
+        run: |
+          make lint-rodeos
+  deploy:
+    name: Deploy Scenarios to Hobbyfarm
+    runs-on: ubuntu-latest
+    needs: lint
+    strategy:
+      matrix:
+         environment: [NA, EU]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - uses: actions-hub/kubectl@v1.26.0
+        env:
+          KUBE_CONFIG: ${{ secrets["KUBECONFIG_" + matrix.environment] }}
+      - name: Install hfcli
+        run: |
+          wget https://github.com/hobbyfarm/hfcli/releases/download/0.1.0/hfcli_Linux_x86_64.tar.gz
+          tar xvf hfcli_Linux_x86_64.tar.gz
+          mv hfcli_Darwin_x86_64/hfcli /usr/local/bin/hfcli
+      - name: Deploy to ${{ matrix.environment }}
+        run: |
+          make apply-rodeos

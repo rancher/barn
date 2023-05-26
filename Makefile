@@ -6,6 +6,13 @@ lint:
 		--config /data/.markdownlint.yaml \
 		/data
 
+lint-rodeos:
+	docker run --rm \
+        -v "$(shell pwd):/data:ro" \
+        avtodev/markdown-lint:v1 \
+		--config /data/.markdownlint.yaml \
+		/data/Rodeos
+
 fix:
 	docker run --rm \
         -v "$(shell pwd):/data" \
