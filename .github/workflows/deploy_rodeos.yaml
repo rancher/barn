@@ -27,9 +27,6 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - uses: actions-hub/kubectl@v1.26.0
-        env:
-          KUBE_CONFIG: ${{ secrets[format('KUBECONFIG_{0}', matrix.environment)] }}
       - name: Install hfcli
         run: |
           wget https://github.com/hobbyfarm/hfcli/releases/download/0.1.0/hfcli_Linux_x86_64.tar.gz
@@ -37,4 +34,5 @@ jobs:
           mv hfcli /usr/local/bin/hfcli
       - name: Deploy to ${{ matrix.environment }}
         run: |
+          echo "$KUBE_CONFIG" | base64 -d > $HOME/.kube/config
           make apply-rodeos
