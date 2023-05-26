@@ -34,7 +34,7 @@ jobs:
         run: |
           wget https://github.com/hobbyfarm/hfcli/releases/download/0.1.0/hfcli_Linux_x86_64.tar.gz
           tar xvf hfcli_Linux_x86_64.tar.gz
-          mv hfcli_Linux_x86_64/hfcli /usr/local/bin/hfcli
+          mv hfcli /usr/local/bin/hfcli
       - name: Deploy to ${{ matrix.environment }}
         run: |
           make apply-rodeos
