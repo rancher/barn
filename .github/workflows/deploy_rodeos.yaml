@@ -39,3 +39,4 @@ jobs:
           make apply-rodeos
         env:
           KUBE_CONFIG: ${{ secrets[format('KUBECONFIG_{0}', matrix.environment)] }}
+          KUBECONFIG: ~/.kube/config
