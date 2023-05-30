@@ -13,7 +13,8 @@ First, we'll add the helm repository for Jetstack
 helm repo add jetstack https://charts.jetstack.io
 ```
 
-Now, we can install cert-manager version `1.11.0`
+Now, we can install cert-manager:
+
 ```ctr:Rancher01
 helm install \
   cert-manager jetstack/cert-manager \
