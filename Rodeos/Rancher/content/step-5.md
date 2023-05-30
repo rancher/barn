@@ -13,13 +13,12 @@ First, we'll add the helm repository for Jetstack
 helm repo add jetstack https://charts.jetstack.io
 ```
 
-Now, we can install cert-manager:
-
+Now, we can install cert-manager version `1.11.0`
 ```ctr:Rancher01
 helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
-  --version v1.10.1 \
+  --version v1.11.0 \
   --set installCRDs=true \
   --create-namespace
 ```

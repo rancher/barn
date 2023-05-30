@@ -16,6 +16,6 @@ helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
   --set hostname=rancher.${vminfo:rancher01:public_ip}.sslip.io \
   --set replicas=1 \
-  --version 2.7.0 \
+  --version 2.7.3 \
   --create-namespace
 ```
