@@ -34,9 +34,9 @@ jobs:
           mv hfcli /usr/local/bin/hfcli
       - name: Deploy to ${{ matrix.environment }}
         run: |
-          mkdir -p /tmp/.kube
-          echo "$KUBE_CONFIG" | base64 -d > ~/tmp/.kube/config
+          mkdir -p /home/runner/.kube
+          echo "$KUBE_CONFIG" | base64 -d > /home/runner/.kube/config
           make apply-rodeos
         env:
           KUBE_CONFIG: ${{ secrets[format('KUBECONFIG_{0}', matrix.environment)] }}
-          KUBECONFIG: /tmp/.kube/config
+          KUBECONFIG: /home/runner/.kube/config
