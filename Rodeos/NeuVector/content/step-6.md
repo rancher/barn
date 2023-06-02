@@ -53,6 +53,6 @@ Finally, we can install NeuVector using our `helm install` command.
 helm install neuvector neuvector/core \
   --namespace cattle-neuvector-system \
   -f ~/neuvector-values.yaml \
-  --version 2.4.0 \
+  --version 2.4.5 \
   --create-namespace
 ```
