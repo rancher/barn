@@ -11,7 +11,7 @@ In this step, we will be creating a Kubernetes Lab environment within Rancher. N
    - Note the multiple types of Kubernetes cluster Rancher supports. We will be using **Custom cluster on existing nodes** for this lab, but there are a lot of possibilities with Rancher.
 3. Click on the **Custom** Cluster box in the **Use existing nodes and create a cluster using RKE2** section
 4. Enter a name in the **Cluster Name** box
-5. Set the Kubernetes Version to a `v1.23.x` version
+5. Set the Kubernetes Version to a `v1.24.x` version
 6. All other settings can be kept as default
 7. Click **Create** at the bottom.
 8. Once the cluster is created, you can retrieve an installation command in the **Registration** tab that you can use to add new nodes to your Kubernetes cluster.

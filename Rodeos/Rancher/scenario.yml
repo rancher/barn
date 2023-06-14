@@ -1,7 +1,7 @@
-description: Rancher Rodeo
+description: Introducing Rancher and its Kubernetes cluster and workload management capabilities
 id: git-maintained-rodeo-rancher
 keepalive_duration: 90m
-name: Rancher Rodeo (test)
+name: Rancher Rodeo
 pause_duration: 4h
 pauseable: false
 steps: null

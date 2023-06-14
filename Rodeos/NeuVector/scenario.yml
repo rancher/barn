@@ -1,7 +1,7 @@
-description: NeuVector Rodeo
+description: Introducing zero-trust container security with NeuVector
 id: git-maintained-rodeo-neuvector
 keepalive_duration: 90m
-name: NeuVector Rodeo (test)
+name: NeuVector Rodeo
 pause_duration: 4h
 pauseable: false
 steps: null
