@@ -13,11 +13,11 @@ Let us create a rule that will block deployments to the `default` namespace. For
 
 Click **Add** and use the following settings:
 
-Type: Deny
-Comment: Deny default namespace
-Criterion: Namespace
-Operator: Is one of
-Value: default
+* Type: Deny
+* Comment: Deny default namespace
+* Criterion: Namespace
+* Operator: Is one of
+* Value: default
 
 Note that you have to click the `+` icon to actually add the rule that you configured in the form.
 
