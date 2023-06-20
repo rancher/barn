@@ -1,0 +1,20 @@
+      apiVersion: mutations.gatekeeper.sh/v1alpha1
+      kind: AssignMetadata
+      metadata:
+        name: namespace-to-project
+      spec:
+        match:
+          scope: Cluster
+          kinds:
+          - apiGroups: ["*"]
+            kinds: ["Namespace"]
+          namespaceSelector:
+            matchExpressions:
+              - key: <namespace-label-key>
+                operator: In
+                values:
+                  - <namespace-label-value>
+        location: metadata.annotations."field.cattle.io/projectId"
+        parameters:
+          assign:
+            value: "<rancherProjectID>"

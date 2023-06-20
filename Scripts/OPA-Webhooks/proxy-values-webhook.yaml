@@ -1,0 +1,152 @@
+# This Mutating Webhook will APPEND proxy environment variables list to any Pods with existing env variables.
+# This example is Namespace-scoped, but can be Cluster-scoped if needed.
+apiVersion: mutations.gatekeeper.sh/v1
+kind: ModifySet
+metadata:
+  name: append-proxy-env-variables
+spec:
+  applyTo:
+    - groups:
+        - ''
+      kinds:
+        - Pod
+      versions:
+        - v1
+  location: spec.containers[name:*].env
+  match:
+    kinds:
+      - apiGroups:
+          - '*'
+        kinds:
+          - Pod
+    namespaces:
+      - <k8s-namespace-goes-here>
+    scope: Namespaced
+  parameters:
+    operation: merge
+    values:
+      fromList:
+        - name: HTTP_PROXY
+          value: http://1.2.3.4:8081
+        - name: HTTPS_PROXY
+          value: https://1.2.3.4:8081
+        - name: NO_PROXY
+          value: 10.0.0.0/8,127.0.0.0/8,localhost,.svc,.cluster.local
+    pathTests:
+      - condition: MustExist
+        subPath: spec.containers[name:*].env
+
+---
+
+# This Mutating Webhook will CREATE proxy environment variables list for any Pods with no perviously existing env variables
+# This example is Namespace-scoped, but can be Cluster-scoped if needed.
+apiVersion: mutations.gatekeeper.sh/v1
+kind: Assign
+metadata:
+  name: create-proxy-env-variables
+spec:
+  applyTo:
+    - groups:
+        - ''
+      kinds:
+        - Pod
+      versions:
+        - v1
+  location: spec.containers[name:*].env
+  match:
+    kinds:
+      - apiGroups:
+          - '*'
+        kinds:
+          - Pod
+    namespaces:
+      - <k8s-namespace-goes-here>
+    scope: Namespaced
+  parameters:
+    assign:
+      value:
+        - name: HTTP_PROXY
+          value: http://1.2.3.4:8081
+        - name: HTTPS_PROXY
+          value: https://1.2.3.4:8081
+        - name: NO_PROXY
+          value: 10.0.0.0/8,127.0.0.0/8,localhost,.svc,.cluster.local
+    pathTests:
+      - condition: MustNotExist
+        subPath: spec.containers[name:*].env
+
+---
+
+# This Mutating Webhook will APPEND container volumeMounts list to include a proxy CA cert
+# This example is Namespace-scoped, but can be Cluster-scoped if needed.
+apiVersion: mutations.gatekeeper.sh/v1
+kind: ModifySet
+metadata:
+  name: append-proxy-ca-container-volume-mount
+spec:
+  applyTo:
+    - groups:
+        - ''
+      kinds:
+        - Pod
+      versions:
+        - v1
+  location: spec.containers[name:*].volumeMounts
+  match:
+    kinds:
+      - apiGroups:
+          - '*'
+        kinds:
+          - Pod
+    namespaces:
+      - <k8s-namespace-goes-here>
+    scope: Namespaced
+  parameters:
+    operation: merge
+    values:
+      fromList:
+        - name: proxy-ca-pemstore
+          mountPath: /etc/ssl/certs/cool-proxy-cert.pem
+          subPath: cool-proxy-cert.pem
+          readOnly: true
+    pathTests:
+      - condition: MustExist
+        subPath: spec.containers[name:*].volumeMounts
+
+---
+
+# This Mutating Webhook will APPEND Pod volumes list to include a proxy CA cert (this example uses a Secret, but a ConfigMap could also be used if desired)
+# This example is Namespace-scoped, but can be Cluster-scoped if needed.
+apiVersion: mutations.gatekeeper.sh/v1
+kind: ModifySet
+metadata:
+  name: append-proxy-ca-pod-volume
+spec:
+  applyTo:
+    - groups:
+        - ''
+      kinds:
+        - Pod
+      versions:
+        - v1
+  location: spec.volumes
+  match:
+    kinds:
+      - apiGroups:
+          - '*'
+        kinds:
+          - Pod
+    namespaces:
+      - <k8s-namespace-goes-here>
+    scope: Namespaced
+  parameters:
+    operation: merge
+    pathTests:
+      - condition: MustExist
+        subPath: spec.volumes
+    values:
+      fromList:
+        - name: proxy-ca-pemstore
+          secret:
+            defaultMode: 420
+            secretName: proxy-ca-pemstore
