@@ -1,0 +1,11 @@
+description: Hack into a Kubernetes cluster and protect yourself against it
+id: git-maintained-hacking-kubernetes
+keepalive_duration: 90m
+name: Workshop - Hacking Kubernetes
+pause_duration: 4h
+pauseable: false
+steps: null
+virtualmachines:
+- victim01: ubuntu1804-insecure
+- attacker01: sles-15-sp2
+- attacker02: sles-15-sp2
