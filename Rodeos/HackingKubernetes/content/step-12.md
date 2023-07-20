@@ -7,7 +7,7 @@ weight = 12
 
 First wait until all NeuVector Pods are up and running
 
-Run the following commands on the victim01 VM.
+**Run the following commands on the victim01 VM.**
 
 ```ctr
 kubectl get pods -n cattle-neuvector-system

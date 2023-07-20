@@ -5,7 +5,7 @@ weight = 4
 
 RKE1 now created a new Kubernetes cluster. In order to interact with its API, we can use the Kubernetes CLI `kubectl`.
 
-Run the following commands on the victim01 VM.
+**Run the following commands on the victim01 VM.**
 
 To install `kubectl` run:
 

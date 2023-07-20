@@ -5,7 +5,7 @@ weight = 11
 
 We will now install NeuVector onto our `Victim01` Kubernetes cluster. The following command will add `neuvector` as a helm repository.
 
-Run the following commands on the victim01 VM.
+**Run the following commands on the victim01 VM.**
 
 ```ctr
 helm repo add neuvector https://neuvector.github.io/neuvector-helm/

@@ -34,7 +34,7 @@ Note that you have to click the `+` icon for each criterion to actually add the 
 
 Delete the Pod again to force Kubernetes to recreate it
 
-Run the following commands on the victim01 VM.
+**Run the following commands on the victim01 VM.**
 
 ```ctr
 kubectl delete pod -n default -l app=sample-app

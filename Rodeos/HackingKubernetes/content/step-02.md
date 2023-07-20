@@ -3,7 +3,7 @@ title = "Prepare the victim VM"
 weight = 2
 +++
 
-Run the following commands on the victim01 VM.
+**Run the following commands on the victim01 VM.**
 
 The victim VM is running an older Ubuntu 18.04 with an outdated kernel that has some vulnerabilities.
 

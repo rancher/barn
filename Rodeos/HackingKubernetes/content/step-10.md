@@ -7,7 +7,7 @@ cert-manager is a Kubernetes add-on to automate the management and issuance of T
 
 The following set of steps will install cert-manager which will be used to manage the TLS certificates for NeuVector.
 
-Run the following commands on the victim01 VM.
+**Run the following commands on the victim01 VM.**
 
 First, we'll add the helm repository for Jetstack
 

