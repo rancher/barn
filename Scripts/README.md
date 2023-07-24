@@ -1,5 +1,10 @@
 # Scripts
 
+## Rancher Monitoring
+
+* [v1 to v2 Monitoring Migration](./MonitoringV1ToV2/README.md)
+  Small helper scripts to migrate alerts and Grafana dashboards from Rancher monitoring v1 to v2 (introduced in Rancher 2.5). These require the use of a Rancher Bearer API Token with no scope.
+
 ## OPA Mutating Webhook Examples
 
 * [Add K8s Namespace into Rancher Project](./OPA-Webhooks/namespace-to-project.yaml)
