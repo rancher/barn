@@ -7,7 +7,7 @@ These require the use of a Rancher Bearer API Token with no scope.
 
 The scripts are written in Python. The easiest option is to run them in a venv:
 
-```
+```bash
 git clone https://github.com/rancher/barn.git
 cd barn/Scripts/MonitoringV1ToV2
 python3 -m venv venv
@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 All dashboards will be exported. The script creates ConfigMaps that you can create in a cluster with monitoring v2 activated.
 
-```
+```text
 Usage: migrate_dashboards.py [OPTIONS]
 
 Options:
@@ -32,7 +32,7 @@ Options:
 
 Example:
 
-```
+```bash
 python migrate_dashboards.py \
   --rancher-url https://rancher.example.com \
   --rancher-api-token ABCDEF
@@ -45,7 +45,7 @@ kubectl create -f dashboards.yaml
 
 All metric based alerts will be exported. The script creates PrometheusRule objects that you can create in a cluster with monitoring v2 activated.
 
-```
+```text
 Usage: migrate_rules.py [OPTIONS]
 
 Options:
@@ -58,7 +58,7 @@ Options:
 
 Example:
 
-```
+```bash
 python migrate_rules.py \
   --rancher-url https://rancher.example.com \
   --rancher-api-token ABCDEF
@@ -71,7 +71,7 @@ kubectl create -f rules.yaml
 
 The script checks to see why the Monitoring V1 Operator might still be deployed on your cluster and outputs a report.
 
-```
+```text
 Usage: check_monitoring_disabled.py [OPTIONS]
 
 Options:
@@ -84,27 +84,27 @@ Options:
 
 Example:
 
-```
+```bash
 python check_monitoring_disabled.py \
   --rancher-url https://rancher.example.com \
   --rancher-api-token ABCDEF
   --cluster-id c-123456
 ```
 
-# Building and running with Docker
+## Building and running with Docker
 
 You can also run the scripts inside of a Docker image
 
-## Building outside of docker
+### Building outside of docker
 
-```
+```bash
 make build -e VERSION=0.0.1
 ```
 
-## Building and running in Docker
+### Building and running in Docker
 
 Example:
 
-```
+```bash
 docker run rancher/rancher-monitoring-v1-to-v2:0.0.1 check_monitoring_disabled.py --rancher-url https://rancher.example.com --rancher-api-token $API_TOKEN --cluster-id $CLUSTER_ID
 ```
