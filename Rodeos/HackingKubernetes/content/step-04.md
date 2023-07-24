@@ -30,7 +30,7 @@ We can copy the `kube_config_cluster.yml` file to our `/home/ubuntu/.kube/config
 ```ctr
 mkdir -p ~/.kube
 sudo cp ~/kube_config_cluster.yml ~/.kube/config
-sudo chown ubuntu: ~/.kube/config
+sudo chown ubuntu:ubuntu ~/.kube/config
 ```
 
 In order to test that we can properly interact with our cluster, we can execute two commands.
