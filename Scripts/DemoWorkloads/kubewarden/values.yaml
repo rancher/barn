@@ -1,0 +1,10 @@
+global:
+  cattle:
+    clusterName: susecon-demo
+    url: https://rancher.susecon.plgrnd.be
+recommendedPolicies:
+  enabled: true
+  defaultPolicyMode: monitor
+policyServer:
+  telemetry:
+    enabled: true

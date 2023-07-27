@@ -1,0 +1,9 @@
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  host: rancher-demo.demo.susecon.plgrnd.be
+  tls:
+  - secretName: rancher-demo-tls
+    hosts:
+      - rancher-demo.demo.susecon.plgrnd.be

@@ -1,0 +1,28 @@
+wordpress:
+  wordpressPassword: admin
+
+  service:
+    type: ClusterIP
+
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hostname: wordpress.demo.susecon.plgrnd.be
+    tls: true
+
+  persistence:
+    enabled: true
+    size: 10Gi
+    storageClass: longhorn
+
+  mariadb:
+    auth:
+      password: admin
+      rootPassword: admin
+
+    primary:
+      persistence:
+        enabled: true
+        size: 8Gi
+        storageClass: longhorn

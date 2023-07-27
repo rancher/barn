@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kubewarden
+  namespace: cattle-kubewarden-system
+  labels:
+    name: kubewarden-servicemonitor
+spec:
+  selector:
+    matchLabels:
+      app: kubewarden-policy-server-default
+  namespaceSelector:
+    matchNames:
+      - cattle-kubewarden-system
+  endpoints:
+    - port: metrics
+      interval: 10s

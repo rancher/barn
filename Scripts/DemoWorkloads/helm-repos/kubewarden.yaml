@@ -1,0 +1,6 @@
+apiVersion: catalog.cattle.io/v1
+kind: ClusterRepo
+metadata:
+  name: kubewarden
+spec:
+  url: https://charts.kubewarden.io
