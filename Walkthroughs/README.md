@@ -13,3 +13,7 @@
 ## NeuVector
 
 * [Harbor Adapter Configuration](./NeuVector/Harbor%20Adapter%20Configuration/README.md)
+
+## vSphere
+
+  [vSphere Permissions Summary](./vSphere/Permissions/README.md)
