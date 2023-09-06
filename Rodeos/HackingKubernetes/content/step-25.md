@@ -51,7 +51,7 @@ Now we can apply the policy to our kubernetes cluster
 kubectl apply -f user-group-psp.yaml
 ```
 
-Let us check if the policy is in place. The activation of the policy can take some seconds. 
+Let us check if the policy is in place. The activation of the policy can take some seconds.
 
 ```ctr:
 kubectl get admissionpolicies

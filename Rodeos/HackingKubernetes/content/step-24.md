@@ -7,6 +7,7 @@ After we secured our cluster with NeuVector, we would also take a look into Kube
 We will now install Kubewarden onto our `Victim01` Kubernetes cluster.
 
 First we need to change the protected Mode for the node into discovery and disable Admission Control in NeuVector, that we can run commands on the node and the sample app run again in the cluster.
+
 1. Access NeuVector at [https://neuvector.cattle-neuvector-system.${vminfo:victim01:public_ip}.sslip.io](https://neuvector.cattle-neuvector-system.${vminfo:victim01:public_ip}.sslip.io).
 2. To disable, navigate to **Policy -> Admission Control**, and click the **Status** toggle. The status should now be **Disabled**
 3. Go to **Policy > Groups** and choose the `nodes` group.
@@ -14,7 +15,7 @@ First we need to change the protected Mode for the node into discovery and disab
 
 **Run the following commands on the victim01 VM.**
 
-First we will restart the deployment for the sample app that the application will run again. 
+First we will restart the deployment for the sample app that the application will run again.
 
 ```ctr:
 kubectl restart rollout deployment sample-app
@@ -33,6 +34,7 @@ helm install --create-namespace -n kubewarden kubewarden-crds kubewarden/kubewar
 helm install --wait -n kubewarden kubewarden-controller kubewarden/kubewarden-controller
 helm install --wait -n kubewarden kubewarden-defaults kubewarden/kubewarden-defaults
 ```
+
 This will install kubewarden-crds, kubewarden-controller, and a default PolicyServer on the Kubernetes cluster in the default configuration (which includes self-signed TLS certs).
 
 Now we need to install the kwctl cmd tool to pull the policies from the a artifacthub.io
