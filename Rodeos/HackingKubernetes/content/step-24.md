@@ -11,7 +11,7 @@ We will now install Kubewarden onto our `Victim01` Kubernetes cluster. The follo
 helm repo add kubewarden https://charts.kubewarden.io
 ```
 
-Next, we can install Kubewarden using `helm install` command. Kube
+Next, we can install Kubewarden using `helm install` command. We will install three helm charts.
 
 ```ctr
 helm install --create-namespace -n kubewarden kubewarden-crds kubewarden/kubewarden-crds
@@ -33,6 +33,7 @@ Now we need to install the kwctl cmd tool to pull the policies from the a artifa
 wget https://github.com/kubewarden/kwctl/releases/download/v1.7.0-rc2/default.kwctl-linux-x86_64.kwctl-linux-x86_64.zip
 unzip default.kwctl-linux-x86_64.kwctl-linux-x86_64.zip
 ```
+
 For a easy usage we copy the binary into the `/usr/bin directory`
 ```ctr
 cp kwctl-linux-x86_64 /usr/bin/kwctl

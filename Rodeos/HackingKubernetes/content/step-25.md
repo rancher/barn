@@ -12,12 +12,12 @@ Now we need to pull the policy to our local datastore
 kwctl pull ghcr.io/kubewarden/policies/user-group-psp:v0.4.9
 ```
 
-Now we will create a yaml file from that policy to modify the file and put some rules into it.
+Then we will create a yaml file from that policy to modify the file and put some rules into it.
 ```ctr
 kwctl scaffold manifest -t AdmissionPolicy registry://ghcr.io/kubewarden/policies/user-group-psp:v0.4.9 > user-group-psp.yaml
 ```
 
-Now we need to add the following configuration parameter into the `user-group-psp.yaml`.Open the yaml file with vi.
+We need to add the following configuration parameter into the `user-group-psp.yaml`.Open the yaml file with vi.
 ```ctr
 vi user-group-psp.yaml
 ```
@@ -50,7 +50,7 @@ Now we will delete the pod of the sample application to check the policy
 kubectl get pods | tail -n 1 | kubectl delete pod $(awk '{print $1}')
 ```
 
-
+We will see, that the pod can't be created
 ```ctr
 kubectl get events
 ```
