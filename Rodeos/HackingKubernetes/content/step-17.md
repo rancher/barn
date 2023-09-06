@@ -5,13 +5,13 @@ weight = 17
 
 Ensure, that you have a fresh shell on both attacker01 and attacker02. Cancel running processes with Ctrl+C.
 
-Then open nc on attacker 01
+Then open nc on **attacker 01**
 
 ```ctr:
 sudo nc -lvnp 443
 ```
 
-And socat on attacker02
+And socat on **attacker02**
 
 ```ctr:
 socat file:`tty`,raw,echo=0 tcp-listen:4445

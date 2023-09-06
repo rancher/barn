@@ -16,7 +16,7 @@ metadata:
   namespace: kube-system
 stringData:
   access-token: this-does-not-work
-EOF  
+EOF
 ```
 
 Let's now deploy a sample application that will be vulnerable to a Log4Shell attack:
