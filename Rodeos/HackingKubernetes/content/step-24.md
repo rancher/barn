@@ -27,7 +27,7 @@ helm install --wait -n kubewarden kubewarden-defaults kubewarden/kubewarden-defa
 
 This will install kubewarden-crds, kubewarden-controller, and a default PolicyServer on the Kubernetes cluster in the default configuration (which includes self-signed TLS certs).
 
-Now we need to install the kwctl cmd tool to pull the policies from the a artifacthub.io 
+Now we need to install the kwctl cmd tool to pull the policies from the a artifacthub.io
 
 ```ctr
 wget https://github.com/kubewarden/kwctl/releases/download/v1.7.0-rc2/default.kwctl-linux-x86_64.kwctl-linux-x86_64.zip
@@ -35,6 +35,7 @@ unzip default.kwctl-linux-x86_64.kwctl-linux-x86_64.zip
 ```
 
 For a easy usage we copy the binary into the `/usr/bin directory`
+
 ```ctr
 cp kwctl-linux-x86_64 /usr/bin/kwctl
 ```
