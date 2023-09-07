@@ -12,6 +12,12 @@ Now we need to pull the policy to our local datastore
 kwctl pull ghcr.io/kubewarden/policies/user-group-psp:v0.4.9
 ```
 
+We can check the pulled policies
+
+```ctr:
+kwctl policies
+```
+
 Then we will create a yaml file from that policy to modify the file and put some rules into it.
 
 ```ctr:
@@ -45,7 +51,7 @@ Now we can apply the policy to our kubernetes cluster
 kubectl apply -f user-group-psp.yaml
 ```
 
-Let us check if the policy is in place
+Let us check if the policy is in place. The activation of the policy can take some seconds.
 
 ```ctr:
 kubectl get admissionpolicies

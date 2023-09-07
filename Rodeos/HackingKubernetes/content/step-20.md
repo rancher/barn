@@ -31,7 +31,7 @@ Under **Process Profile Rules**, click on **Actions** and **Add rule**:
 * Path: `/usr/bin/socat`
 * Action: Deny
 
-Execute the socat payload in the remote shell on the attacker01 VM again
+Execute the socat payload in the remote shell on the **attacker01 VM** again
 
 ```ctr:
 sh -c "echo \$\$ > /tmp/cgrp/x/cgroup.procs"
