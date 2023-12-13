@@ -8,7 +8,7 @@ RKE2 now created a new Kubernetes cluster. In order to interact with its API, we
 To install `kubectl` run:
 
 ```ctr:Rancher01
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "https://dl.k8s.io/release/v1.26.11/bin/linux/amd64/kubectl"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
 
