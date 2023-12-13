@@ -7,10 +7,11 @@ cert-manager is a Kubernetes add-on to automate the management and issuance of T
 
 The following set of steps will install cert-manager which will be used to manage the TLS certificates for Rancher.
 
-First, we'll add the helm repository for Jetstack
+First, we'll add the helm repository for Jetstack and update the local Helm chart repository cache.
 
 ```ctr:Rancher01
 helm repo add jetstack https://charts.jetstack.io
+helm repo update
 ```
 
 Now, we can install cert-manager:
@@ -19,7 +20,7 @@ Now, we can install cert-manager:
 helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
-  --version v1.11.0 \
+  --version v1.13.3 \
   --set installCRDs=true \
   --create-namespace
 ```
