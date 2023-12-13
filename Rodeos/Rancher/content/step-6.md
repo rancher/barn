@@ -3,7 +3,7 @@ title = "Install Rancher"
 weight = 6
 +++
 
-We will now install Rancher onto our `Rancher01` Kubernetes cluster. The following command will add `rancher-latest` as a helm repository and update the local Helm chart repository cache.
+We will now install Rancher onto our `Rancher01` Kubernetes cluster. The following command will add `rancher-stable` as a helm repository and update the local Helm chart repository cache.
 
 ```ctr:Rancher01
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
