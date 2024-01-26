@@ -11,7 +11,7 @@ In this Rodeo we want to create a single node Kubernetes cluster on the `Kuberne
 
 ```ctr:Kubernetes01
 sudo bash -c 'curl -sfL https://get.rke2.io | \
-  INSTALL_RKE2_CHANNEL="v1.24" \
+  INSTALL_RKE2_CHANNEL="v1.27" \
   sh -'
 ```
 
