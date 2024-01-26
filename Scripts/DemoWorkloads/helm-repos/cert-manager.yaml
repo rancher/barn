@@ -1,0 +1,6 @@
+apiVersion: catalog.cattle.io/v1
+kind: ClusterRepo
+metadata:
+  name: jetstack
+spec:
+  url: https://charts.jetstack.io
