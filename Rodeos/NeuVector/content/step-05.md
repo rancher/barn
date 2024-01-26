@@ -19,7 +19,7 @@ Now, we can install cert-manager:
 helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
-  --version v1.11.0 \
+  --version v1.13.3 \
   --set installCRDs=true \
   --create-namespace
 ```
