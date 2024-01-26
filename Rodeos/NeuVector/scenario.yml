@@ -1,4 +1,4 @@
-description: Introducing zero-trust container security with NeuVector
+description: Zero-trust Kubernetes Security with NeuVector
 id: git-maintained-rodeo-neuvector
 keepalive_duration: 90m
 name: NeuVector Rodeo
