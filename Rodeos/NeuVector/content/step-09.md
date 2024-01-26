@@ -23,7 +23,7 @@ helm install \
   --create-namespace
 ```
 
-Wait until the WordPress Pods are up and running
+Wait until the WordPress Pods are up and running. This can often take upwards of 2 minutes.
 
 ```ctr:Kubernetes01
 kubectl get pods -n wordpress
