@@ -7,7 +7,7 @@ Now, let's configure a set of registry scans. This feature can run periodic scan
 
 Navigate to **Assets -> Registries** and click "Add" and use the following example values to add 2 registries:
 
- >* Name: docker-example
+ * Name: docker-example
  * Registry: `https://registry.hub.docker.com`
  * Filter: elastic/logstash:7.13.3
  * Rescan after CVE: yes
@@ -15,7 +15,7 @@ Navigate to **Assets -> Registries** and click "Add" and use the following examp
  * Periodic: no
 
 
- >* Name: nv-demo
+ * Name: nv-demo
  * Registry: `https://registry.hub.docker.com`
  * Filter: nvbeta/*
  * Rescan after CVE: yes
