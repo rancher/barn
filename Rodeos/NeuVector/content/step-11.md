@@ -15,7 +15,6 @@ Navigate to **Assets -> Registries** and click "Add" and use the following examp
 * Periodic: no
 
 * Name: nv-demo
-* Name: nv-demo
 * Registry: `https://registry.hub.docker.com`
 * Filter: nvbeta/*
 * Rescan after CVE: yes
