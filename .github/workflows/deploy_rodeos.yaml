@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Install hfcli
         run: |
-          wget https://github.com/hobbyfarm/hfcli/releases/download/0.1.0/hfcli_Linux_x86_64.tar.gz
+          wget https://github.com/hobbyfarm/hfcli/releases/download/v0.2.0/hfcli_Linux_x86_64.tar.gz
           tar xvf hfcli_Linux_x86_64.tar.gz
           mv hfcli /usr/local/bin/hfcli
       - name: Deploy to ${{ matrix.environment }}
