@@ -1,0 +1,27 @@
+controller:
+  apisvc:
+    type: ClusterIP
+  replicas: 1
+  ranchersso:
+    enabled: true
+  secret:
+    enabled: true
+    data:
+      sysinitcfg.yaml:
+        Cluster_Name: susecon-demo
+      userinitcfg.yaml:
+        users:
+        - Fullname: admin
+          Username: admin
+          Role: admin
+          Password: adminadmin
+cve:
+  scanner:
+    replicas: 1
+
+k3s:
+  enabled: true
+
+global:
+  cattle:
+    url: https://rancher.susecon.plgrnd.be/

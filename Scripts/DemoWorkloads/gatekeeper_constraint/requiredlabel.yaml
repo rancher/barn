@@ -1,0 +1,23 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequiredLabels
+metadata:
+  name: namespace-needs-owner
+spec:
+  enforcementAction: dryrun
+  match:
+    excludedNamespaces: []
+    kinds:
+      - apiGroups:
+          - '*'
+        kinds:
+          - Namespace
+    labelSelector:
+      matchExpressions: []
+    namespaceSelector:
+      matchExpressions: []
+    scope: '*'
+  parameters:
+    labels:
+      - allowedRegex: ^[a-z]+$
+        key: owner
+    message: All namespaces must have an `owner` label

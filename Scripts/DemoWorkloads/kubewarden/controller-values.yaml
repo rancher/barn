@@ -1,0 +1,9 @@
+telemetry:
+  enabled: true
+  metrics:
+    port: 8080
+  tracing:
+    jaeger:
+      endpoint: "jaeger-collector.istio-system.svc.cluster.local:14250"
+      tls:
+        insecure: true

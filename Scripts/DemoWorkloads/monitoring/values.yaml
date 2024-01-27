@@ -1,0 +1,37 @@
+prometheus:
+  prometheusSpec:
+    resources:
+      limits:
+        memory: 3500Mi
+
+rke2ControllerManager:
+  enabled: true
+
+rke2Etcd:
+  enabled: true
+
+rke2IngressNginx:
+  enabled: false
+
+ingressNginx:
+  enabled: true
+  namespace: kube-system
+
+rke2Proxy:
+  enabled: true
+
+rke2Scheduler:
+  enabled: true
+
+grafana:
+  global:
+    cattle:
+      clusterName: susecon-demo
+      clusterId: c-m-x7w6shvs
+      url: https://rancher.susecon.plgrnd.be
+
+global:
+  cattle:
+    clusterName: susecon-demo
+    clusterId: c-m-x7w6shvs
+    url: https://rancher.susecon.plgrnd.be

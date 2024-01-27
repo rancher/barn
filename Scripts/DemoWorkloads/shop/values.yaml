@@ -1,0 +1,9 @@
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  host: shop.demo.susecon.plgrnd.be
+  tls:
+  - secretName: shop-tls
+    hosts:
+      - shop.demo.susecon.plgrnd.be

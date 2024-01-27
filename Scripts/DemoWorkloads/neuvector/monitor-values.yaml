@@ -1,0 +1,6 @@
+exporter:
+  grafanaDashboard:
+    enabled: true
+    namespace: cattle-dashboards
+  serviceMonitor:
+    enabled: true

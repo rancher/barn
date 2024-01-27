@@ -1,0 +1,6 @@
+apiVersion: catalog.cattle.io/v1
+kind: ClusterRepo
+metadata:
+  name: rancher-demo-charts
+spec:
+  url: https://rancher.github.io/rodeo/
