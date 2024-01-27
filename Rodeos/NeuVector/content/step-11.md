@@ -14,7 +14,6 @@ Navigate to **Assets -> Registries** and click "Add" and use the following examp
 * Scan Layers: yes
 * Periodic: no
 
-
 * Name: nv-demo
 * Name: nv-demo
 * Registry: `https://registry.hub.docker.com`
