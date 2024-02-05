@@ -8,7 +8,7 @@ weight = 7
 First wait until all NeuVector Pods are up and running
 
 ```ctr:Kubernetes01
-kubectl get pods -n cattle-neuvector-system
+kubectl get pods -n neuvector
 ```
 
 1. Access NeuVector at [https://neuvector.${vminfo:Kubernetes01:public_ip}.sslip.io](https://neuvector.${vminfo:Kubernetes01:public_ip}.sslip.io).
