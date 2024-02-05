@@ -51,8 +51,8 @@ Finally, we can install NeuVector using our `helm install` command. (Note that t
 
 ```ctr:Kubernetes01
 helm install neuvector neuvector/core \
-  --namespace cattle-neuvector-system \
+  --namespace neuvector \
   -f ~/neuvector-values.yaml \
-  --version 2.7.1 \
+  --version 2.7.2 \
   --create-namespace
 ```
