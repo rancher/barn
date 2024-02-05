@@ -39,11 +39,11 @@ manager:
   ingress:
     enabled: true
     host: neuvector.${vminfo:kubernetes01:public_ip}.sslip.io
-    annotations:
-      cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    tls: true
-    secretName: neuvector-tls-secret
+    # annotations:
+      # cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
+      # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    # tls: true
+    # secretName: neuvector-tls-secret
 EOF
 ```
 
